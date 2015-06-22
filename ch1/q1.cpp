@@ -7,9 +7,9 @@ int main (void)
     int char_val;
     std::string str;
     std::string::const_iterator str_it;
-
     std::vector<bool> unique;
     std::vector<bool>::iterator unique_it;
+
     unique.resize(128);  // 128 chars in 7 bit ASCII
 
     for (unique_it = unique.begin(); unique_it != unique.end(); unique_it++) {
