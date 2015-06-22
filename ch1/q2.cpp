@@ -1,34 +1,30 @@
-#include <iostream>
 #include <cstring>
+#include <iostream>
 
-void reverse_string(char in_string[]);
-
-using namespace std;
+void reverse_str(char str[], char rev_str[]);
 
 int main (void)
 {
-    char orig_string[] = "abcdefghijklmn";
+    char str[100];
+    char rev_str[100];
 
-    reverse_string(orig_string);
+    std::cout << "Please enter a string to be reversed by the program: " << std::endl;
+    std::cin >> str;
 
+    reverse_str(str, rev_str);
+
+    std::cout << "The reversed str is " << rev_str << std::endl;
     return 0;
 }
 
-void reverse_string(char in_string[])
-{
-    //char out_string[strlen(in_string)];
-    char out_string[strlen(in_string)];
-    int itr;
+void reverse_str(char str[], char rev_str[]){
+    int str_size = strlen(str);
+    int i;
 
-    for (itr = 0; itr < strlen(in_string); itr++) {
-        out_string[itr] = in_string[ strlen(in_string) - itr - 1 ];
+    for (i=0; i < strlen(str); i++) {
+        rev_str[str_size - 1 - i] = str[i];
     }
 
-    // Add null terminator to reversed string
-    out_string[itr] = '\0';
-
-    cout << "old string is " << in_string << endl;
-    cout << "new string is " << out_string << endl;
-
+    rev_str[str_size] = '\0';
     return;
 }
