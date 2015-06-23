@@ -30,5 +30,3 @@ int main (void) {
     cout << "str1 is " << str1 << endl;
     cout << "str2 is " << str2 << endl;
 }
-
-
