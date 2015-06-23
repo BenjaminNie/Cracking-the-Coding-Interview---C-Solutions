@@ -23,7 +23,6 @@ int main (void)
     }
 
     // replace all duplicates using sort (bubble sort used for simplicity)
-
     for(outer_it = 0; outer_it != str.length(); outer_it++) {
         for (inner_it = outer_it; inner_it != str.length(); inner_it++) {
             std::cout << "str[inner_it] is equal to " << str[inner_it] << std::endl;
