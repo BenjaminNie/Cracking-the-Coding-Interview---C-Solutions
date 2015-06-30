@@ -1,55 +1,81 @@
 #include "List.h"
+#include "Node.h"
 #include <iostream>
 
-template <class T>
-List<T>::List() {
+using std::cout;
+using std::endl;
+
+List::List() {
     headNode = NULL;
 }
 
-template<class T>
-void List<T>::insertNode(T data) {
-    T* listPtr = headNode;
-
-    if (isEmpty()) {  // empty list
-        headNode = new Node<T>(data);
-    }
-
-    else {
-        while (listPtr->nextNode != NULL) {
-            listPtr = listPtr->nextNode;
-        }
-        listPtr->nextNode = new Node<T>(data);
-    }
+List::~List() {
+    // traverse through list and delete all items
 }
 
-template<class T>
-void List<T>::deleteNode() {
-    T* listPtrNext = headNode;
-    T* listPtrThis = headNode;
+Node* List::addNode(int data) {
+    Node* nodePtr = new Node(data);
+    return nodePtr;
+}
+
+void List::deleteNodeEnd() {
+    Node* fwdPtr = headNode;
+    Node* bckPtr = headNode;
 
     if (isEmpty()) {
-        std::cout << "Cannot delete.  List is empty" << std::endl;
+        return;
     }
 
-    else if (listPtrNext->next == NULL) {
-        delete listPtrNext;
+
+    if (fwdPtr->next == NULL) { // one item left in LL
+        delete fwdPtr;
         headNode = NULL;
+        return;
     }
 
-    else {
-        while (listPtrNext->next != NULL) {
-            listPtrThis = listPtrNext;
-            listPtrNext = listPtrNext->nextNode;
-        }
-        delete listPtrNext;
-        listPtrThis->nextNode = NULL;
+    while (fwdPtr->next != NULL) {
+        bckPtr = fwdPtr;
+        fwdPtr = fwdPtr->next;
     }
+
+    bckPtr->next = NULL;
+    delete fwdPtr;
 }
 
-template<class T>
-bool List<T>::isEmpty() {
-    if (headNode == NULL)
+bool List::isEmpty() {
+    if (headNode == NULL) {
+        cout << "List is empty" << endl;
         return true;
+    }
     else
         return false;
+}
+
+void List::addNodeEnd(int data) {
+    Node* nodePtr = headNode;
+
+    if (isEmpty()) {
+        headNode = addNode(data);
+        return;
+    }
+
+    while (nodePtr->next != NULL) {
+        nodePtr = nodePtr ->next;
+    }
+
+    nodePtr->next = addNode(data);
+}
+
+void List::printList() {
+    Node* nodePtr = headNode;
+
+    if (isEmpty()) {
+        return;
+    }
+
+    while (nodePtr != NULL) {
+        cout << nodePtr->getData() << " -> ";
+        nodePtr = nodePtr->next;
+    }
+    cout << "NULL" << endl;
 }

@@ -1,16 +1,19 @@
 #ifndef LIST_H
 #define LIST_H
+
 #include "Node.h"
 
-template<class T>
 class List {
     public:
         List();
-        void insertNode(T data);
-        void deleteNode(); //Deletes last node in the list
+        Node* addNode(int data);
+        void addNodeEnd(int data);
+        void deleteNodeEnd();
         bool isEmpty();
-
+        void printList();
+        ~List();
     private:
-        Node<T> headNode;
+        Node* headNode;
 };
+
 #endif

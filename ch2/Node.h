@@ -1,17 +1,16 @@
 #ifndef NODE_H
 #define NODE_H
 
-template <class T>
 class Node {
     public:
-        Node() {};
-        Node(T data);
-        void printNode();
-        void getData();
-        virtual ~Node();
+        Node();
+        Node(int data);
+        int getData();
+        ~Node();
+
+        Node* next;
     private:
-        T m_data;
-        T* nextNode;
+        int m_data;
 };
 
 #endif

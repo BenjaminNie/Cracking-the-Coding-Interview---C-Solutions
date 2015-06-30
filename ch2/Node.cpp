@@ -1,18 +1,24 @@
 #include "Node.h"
 #include <iostream>
 
-template<class T>
-Node<T>::Node(T data) {
+using std::cout;
+using std::endl;
+
+Node::Node() {
+    m_data = 0;
+    next = NULL;
+}
+
+Node::Node(int data) {
     m_data = data;
-    nextNode = NULL;
+    next = NULL;
 }
 
-template<class T>
-void Node<T>::printNode() {
-    std::cout << m_data;
-}
-
-template<class T>
-void Node<T>::getData() {
+int Node::getData() {
     return m_data;
 }
+
+Node::~Node() {
+    // node destructor
+}
+    
