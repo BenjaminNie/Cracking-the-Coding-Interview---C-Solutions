@@ -28,6 +28,6 @@ int main (void) {
     list1.removeDuplicates();
 
     list1.printList();
-    // SHOULD NO LONGER BE ABLE TO DELETE
+
     return 0;
 }
