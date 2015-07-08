@@ -6,7 +6,6 @@ using std::endl;
 
 int main (void) {
     Stack<int> stack1;
-    
     stack1.push(10);
     stack1.push(123);
     stack1.push(2);
