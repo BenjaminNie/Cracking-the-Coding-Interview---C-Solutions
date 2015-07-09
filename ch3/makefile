@@ -6,3 +6,6 @@ q2:
 
 q3:
 	g++ -o q3 q3.cpp StackOfStacks.cpp
+
+q5:
+	g++ -o q5 q5.cpp Queue.cpp;
