@@ -6,3 +6,6 @@ q1:
 
 q2:
 	g++ -o q2 q2.cpp
+
+q4:
+	g++ -o q4 q4.cpp
