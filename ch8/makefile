@@ -15,3 +15,6 @@ q4:
 
 q5:
 	g++ -o q5 q5.cpp
+
+q7:
+	g++ -o q7 q7.cpp
