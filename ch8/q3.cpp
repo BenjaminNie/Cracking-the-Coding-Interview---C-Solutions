@@ -7,15 +7,25 @@ using std::endl;
 
 void findAllSubsets(vector<int>& set, vector< vector<int> >& subsets, int size);
 void findUnion(vector< vector<int> >& v, int i);
+vector< vector<int> > findAllSubsets2(vector<int> set);
 
 int main (void) {
-    vector< vector<int> > subsets;
     vector<int> set;
     for (int i = 0; i < 6; i++) {
         set.push_back(i);
     }
+    vector<vector<int> > subsets = findAllSubsets2(set);
 
-    findAllSubsets(set, subsets, set.size());
+    for (auto it = subsets.begin(); it != subsets.end(); it++) {
+        cout << "{ ";
+        for (auto it2 = (*it).begin(); it2 != (*it).end(); it2++) {
+            cout << *it2 << " ";
+        }
+        cout << "}" << endl;
+    }
+    cout << endl << endl << endl << endl;
+
+//    findAllSubsets(set, subsets, set.size());
     return 0;
 }
 
@@ -30,6 +40,25 @@ void findAllSubsets(vector<int>& set, vector< vector<int> >& subsets, int size) 
     findUnion(subsets, set[size - 1]);
 
     return;
+}
+
+vector< vector<int> > findAllSubsets2(vector<int> set) {
+    vector< vector<int> > subset;
+
+    for (auto it = set.begin(); it != set.end(); it++) {
+        vector<vector<int> > temp = subset;
+        for (auto it2 = subset.begin(); it2 != subset.end(); it2++) {
+            (*it2).push_back(*it);
+        }
+        for (auto it2 = temp.begin(); it2 != temp.end(); it2++) {
+            subset.push_back(*it2);
+        }
+        vector<int> lastItem;
+        lastItem.push_back(*it);
+        subset.push_back (lastItem);
+    }
+
+    return subset;
 }
 
 void findUnion(vector< vector<int> >& v, int i) {

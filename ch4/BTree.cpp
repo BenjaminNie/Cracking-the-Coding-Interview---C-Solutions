@@ -8,6 +8,47 @@ BTree::BTree() {
     root = NULL;
 }
 
+BTree::BTree(vector<int> array) {
+    transformToTree(root, array, array.size() - 1, 0);
+}
+
+void BTree::transformToTree(Node*& node, vector<int> array, int high, int low) {
+    if (low <= high) {
+        int mid = (high + low)/2;
+        node = new Node(array[mid]);
+        transformToTree(node->leftChild, array, mid - 1, low);
+        transformToTree(node->rightChild, array, mid + 1, high);
+    }
+    return;
+}
+
+bool BTree::searchForValue(int searchValue) {
+    vector<Node*> depth;
+    depth.push_back(root);
+
+    return breadthFirstSearch(depth, searchValue);
+}
+
+bool BTree::breadthFirstSearch(vector<Node*> depth, int searchValue) {
+    if (depth.empty())
+        return false;
+
+    vector<Node*> nextDepth;
+
+    for (auto it = depth.begin(); it != depth.end(); it++) {
+        if ((*it)->myValue == searchValue) {
+            return true;
+        } else {
+            if ((*it)->leftChild != NULL)
+                nextDepth.push_back((*it)->leftChild);
+            if ((*it)->rightChild != NULL)
+                nextDepth.push_back((*it)->rightChild);
+        }
+    }
+
+    return breadthFirstSearch(nextDepth, searchValue);
+}
+
 bool BTree::isEmpty() {
     if (root == NULL)
         return true;

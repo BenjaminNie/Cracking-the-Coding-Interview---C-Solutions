@@ -1,5 +1,4 @@
 #include "Node.h"
-#include "Node.h"
 #include "List.h"
 #include <iostream>
 
